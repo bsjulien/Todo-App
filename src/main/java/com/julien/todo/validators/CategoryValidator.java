@@ -1,7 +1,7 @@
 package com.julien.todo.validators;
 
 import com.julien.todo.dto.CategoryDto;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,10 @@ public class CategoryValidator {
             errors.add("Please fill the description");
             return  errors;
         }
-        if (StringUtils.hasText(categoryDto.getName())) {
+        if (ObjectUtils.isEmpty(categoryDto.getName())) {
             errors.add("Please fill the name");
         }
-        if (StringUtils.hasText(categoryDto.getDescription())) {
+        if (ObjectUtils.isEmpty(categoryDto.getDescription())) {
             errors.add("Please fill the description");
         }
         return errors;

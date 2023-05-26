@@ -1,7 +1,7 @@
 package com.julien.todo.validators;
 
 import com.julien.todo.dto.UserDto;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,19 +19,19 @@ public class UserValidator {
             return errors;
         }
 
-        if (StringUtils.hasText(user.getFirstName())) {
+        if (ObjectUtils.isEmpty(user.getFirstName())){
             errors.add("Please fill the First name");
         }
-        if (StringUtils.hasText(user.getLastName())) {
+        if (ObjectUtils.isEmpty(user.getLastName())){
             errors.add("Please fill the Last name");
         }
-        if (StringUtils.hasText(user.getUserName())) {
+        if (ObjectUtils.isEmpty(user.getUserName())){
             errors.add("Please fill the User name");
         }
-        if (StringUtils.hasText(user.getEmail())) {
+        if (ObjectUtils.isEmpty(user.getEmail())){
             errors.add("Please fill the user Email");
         }
-        if (StringUtils.hasText(user.getPassword())) {
+        if (ObjectUtils.isEmpty(user.getPassword())){
             errors.add("Please fill the User Password");
         }
 
@@ -40,10 +40,10 @@ public class UserValidator {
 
     public static List<String> validateUserCredentials(String email, String password) {
         List<String> errors = new ArrayList<>();
-        if (StringUtils.hasText(email)) {
+        if (ObjectUtils.isEmpty(email)) {
             errors.add("Email is empty");
         }
-        if (StringUtils.hasText(password)) {
+        if (ObjectUtils.isEmpty(password)) {
             errors.add("Password is empty");
         }
         return errors;
